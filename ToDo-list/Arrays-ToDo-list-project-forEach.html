@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo Lists</title>
+    <style>
+      body {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        justify-content: space-between;
+        flex-direction: column;
+        font-family: "inter";
+        text-transform: capitalize;
+      }
+
+      h1 {
+        width: 40vw;
+        margin: auto;
+        height: 35px;
+        font-weight: bolder;
+        margin-bottom: 20px;
+        text-decoration: 2px underline black;
+        background-image: linear-gradient(brown, red, pink);
+        background-clip: text;
+        color: transparent;
+      }
+
+      input {
+        height: 40px;
+        font-size: 18px;
+        font-weight: 500;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 200px;
+        background-image: radial-gradient(
+          rgb(255, 255, 255),
+          rgb(240, 240, 240),
+          rgb(200, 200, 200)
+        );
+      }
+
+      .AddButt {
+        height: 40px;
+        width: 100px;
+        padding: 5px;
+        font-size: 18px;
+        border: 1px solid darkgray;
+        border-radius: 10px;
+        background: radial-gradient(lightgreen, limegreen, green, darkgreen);
+      }
+
+      p {
+        font-size: 18px;
+        transition-duration: 1sec;
+      }
+
+      .done {
+        height: 30px;
+        width: 100px;
+        background: radial-gradient(orange, red, darkred);
+        font-size: 18px;
+        padding: 5px;
+        border: 1px solid brown;
+        border-radius: 10px;
+      }
+
+      .todo-grid {
+        display: grid;
+        grid-template-columns: 220px 220px 100px;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin: auto;
+        align-items: center;
+      }
+
+      button{
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>To-Do List</h1>
+
+    <div class="todo-grid">
+      <input type="text" placeholder="To-DO name" class="js-input" />
+      <input type="date" class="js-date-input"/>
+      <button class="AddButt" onclick="addTodo()">Add</button>
+    </div>
+
+    <div class="js-todo-list todo-grid"></div>
+
+    <script>
+      let todoList = [];
+      render();
+
+      let i = 0;
+      function render() {
+        let todoListHTML = "";
+
+        todoList.forEach(function(todoObject, index) {
+          
+          let { name, dueDate } = todoObject;
+          const html = `
+          <div>${name}</div>
+          <div>${dueDate}</div>
+            <button onclick="
+           todoList.splice(${index}, 1);
+           render();
+            " class='done'>Done</button>
+          `;
+          todoListHTML += html;
+        });
+        
+        console.log(todoListHTML);
+        document.querySelector(".js-todo-list").innerHTML = todoListHTML;
+      }
+
+      function addTodo() {
+        let inputElement = document.querySelector(".js-input");
+        let name = inputElement.value;
+        const dateElement = document.querySelector(".js-date-input");
+        const dueDate = dateElement.value;
+        todoList.push({
+          name,
+          dueDate,
+        });
+        console.log(todoList);
+        inputElement.value = "";
+        dateElement.value = '';
+
+        render();
+
+        console.log('this file is going to have the for each loop on the place of for loop')
+      }
+    </script>
+  </body>
+</html>

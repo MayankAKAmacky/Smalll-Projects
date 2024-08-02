@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Rock Paper Scissors</title>
+    <style>
+        *{
+            font-family: 'inter';
+        }
+
+        body{
+            background-color:rgb(40, 40, 40);
+            color: whitesmoke;
+        }
+
+        .butt{
+            background-color: transparent;
+            border-radius: 50%;
+            border:2px solid white;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            margin-right:10px;
+        }
+        button img{
+            height: 100px;            
+        }
+
+        .result{
+          font-size:30px;
+          font-weight: bold;
+          margin-top:50px;
+        }
+
+        .buttt{
+          height: 50px;
+        }
+
+        .score{
+          margin-top: 40px;
+        }
+
+        .reset{
+          height: 50px;
+          width: 150px;
+          font-size: 20px;
+          font-weight: 600;
+          border: none;
+          border-radius:20px;
+          cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Rock Paper Scissors</h1>
+    <button
+     onclick="playGame('Rock')" class="butt"><img src="/img/rock.png"alt="">
+    </button>
+
+    <button
+     onclick="playGame('Paper')"class="butt"><img src="/img/paper.png"alt="">
+    </button>
+
+    <button
+     onclick="playGame('Scissors')"class="butt""><img src="/img/scissors.png"alt="">
+    </button>
+
+    <p class="js-result result">Pick your move:-</p>
+
+    <p class="js-moves">Computer is picking his move be ready.</p>
+
+    <p class="js-score score">Wins: 0, Looses: 0, Ties: 0.</p>
+
+    <button onclick="Reset(); updateScore(); color()" class="reset">Reset Score</button>
+
+    <button class="js-Auto-play reset" onclick="autoPlay()">Auto Play</button>
+
+    <script src="/Java-Advanced-Icon-advanced-function.js"></script>
+</body>
+</html>
